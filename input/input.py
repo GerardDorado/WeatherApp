@@ -1,5 +1,7 @@
 from pandas import DataFrame
+from settings import OPENWEATHER_API_KEY
 from utils import constant_manager
+from service.geolocation_service import get_city_coord
 
 def create_cities_list() -> list:
     constants = constant_manager.ConstantManager()
@@ -19,12 +21,22 @@ def create_cities_list() -> list:
 
         user_input = input("Enter your choice: ")
         if user_input == "1":
-            print("To be implemented")
-            #city_name = input("Enter the name of the city to add: ")
-            #cities.append({"City": city_name, "Latitude": 0, "Longitude": 0})
+            if(OPENWEATHER_API_KEY == None):
+                print("Openweather API Key is not defined")
+                continue
+
+            user_input = input("Enter the name / postal code of the city to add: ")
+            try:
+                city_name, lat, lon = get_city_coord(user_input)
+                cities.append({"City": city_name, "Latitude": lat, "Longitude": lon})
+            except:
+                print("Error trying to fetch the city coordinates, try again later")
+                continue
+
         elif user_input == "2":
             city_name = input("Enter the name of the city to remove: ")
             cities = [city for city in cities if city["City"] != city_name]
+
         elif user_input == "3":
             return cities
 
