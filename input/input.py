@@ -2,6 +2,7 @@ from pandas import DataFrame
 from settings import OPENWEATHER_API_KEY
 from utils import constant_manager
 from service.geolocation_service import get_city_coord
+from matplotlib import pyplot as plt
 
 def create_cities_list() -> list:
     constants = constant_manager.ConstantManager()
@@ -79,6 +80,32 @@ def add_aditional_fields(weather_data: DataFrame) -> DataFrame:
 
         if choice == "1":
             print("Added Windspeed")
-            weather_data[constants.CSV_WS_MPH] = weather_data[constants.CSV_WS_KM_H].map(lambda s: s * 0.62137)
+            weather_data[constants.CSV_WS_MPH] = weather_data[constants.CSV_WS_KM_H].map(lambda s: format(s * 0.62137, ".2f"))
 
     return weather_data
+2
+def show_graph(weather_data: DataFrame):
+    constants = constant_manager.ConstantManager()
+
+    option = input(f"What data do you want to see? \n 1 - {constants.CSV_TEMP_CELSIUS} \n 2 - {constants.CSV_WS_KM_H} \n 3 - {constants.HUMIDITY}\n")
+
+    if option == "1":
+        option = constants.CSV_TEMP_CELSIUS
+    elif option == "2":
+        option = constants.CSV_WS_KM_H
+    elif option == "3":
+        option = constants.CSV_HUMIDITY
+
+    weather_data.plot(kind= "bar", x= "location_id", y= option)
+
+    plt.style.use('_mpl-gallery')
+
+    plt.show()
+
+def handle_options(weather_data: DataFrame):
+    while True:
+        option = input("Choose an option \n 1 - Show data graphs \n 2 - Exit\n")
+        if option == "1":
+            show_graph(weather_data)
+        if option == "2":
+            break

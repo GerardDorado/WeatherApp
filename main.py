@@ -1,6 +1,6 @@
 import pandas as pd
 import io
-from input.input import add_aditional_fields, create_cities_list, create_params_list
+from input.input import add_aditional_fields, create_cities_list, create_params_list, handle_options
 from service.weather_service import fetch_weather_data
 
 #Ask the user to create the list of cities
@@ -27,3 +27,6 @@ print("CSV created")
 
 #Prints the Dataframe
 print(weather_data)
+
+#Handle bonus options (Graph, server, etc)
+handle_options(weather_data)
