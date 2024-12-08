@@ -73,7 +73,7 @@ def add_aditional_fields(weather_data: DataFrame) -> DataFrame:
 
         if choice == "1":
             print("Added Farenheit")
-            weather_data[constants.CSV_TEMP_FARENHEIT] = weather_data[constants.CSV_TEMP_CELSIUS].map(lambda c : (c * 1.8) + 32)
+            weather_data[constants.CSV_TEMP_FARENHEIT] = weather_data[constants.CSV_TEMP_CELSIUS].map(lambda c : format(((c * 1.8) + 32), ".2f"))
 
     if constants.CSV_WS_KM_H in weather_data.columns:
         choice = input("Do you want to see the wind speed measured in Miles/H? \n 1 - Yes \n 2 - No \n")
@@ -83,7 +83,7 @@ def add_aditional_fields(weather_data: DataFrame) -> DataFrame:
             weather_data[constants.CSV_WS_MPH] = weather_data[constants.CSV_WS_KM_H].map(lambda s: format(s * 0.62137, ".2f"))
 
     return weather_data
-2
+
 def show_graph(weather_data: DataFrame):
     constants = constant_manager.ConstantManager()
 

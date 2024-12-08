@@ -1,0 +1,11 @@
+location_id,temperature_2m (°C),relative_humidity_2m (%),wind_speed_10m (km/h),temperature_2m (°F),wind_speed_10m (mph)
+New York,12.9,34,28.0,55.22,17.40
+London,7.0,83,20.7,44.60,12.86
+Paris,7.3,88,15.5,45.14,9.63
+Berlin,3.9,88,12.0,39.02,7.46
+Sydney,18.8,88,3.8,65.84,2.36
+Mumbai,23.0,61,5.4,73.40,3.36
+Cape Town,19.3,71,18.8,66.74,11.68
+Moscow,-3.0,91,7.3,26.60,4.54
+Rio de Janeiro,31.3,59,17.5,88.34,10.87
+Buenos Aires,22.8,31,9.4,73.04,5.84
