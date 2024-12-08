@@ -13,6 +13,7 @@ class ConstantManager():
     CSV_TEMP_FARENHEIT = "temperature_2m (°F)"
     CSV_WS_KM_H = "wind_speed_10m (km/h)"
     CSV_WS_MPH = "wind_speed_10m (mph)"
+    CSV_HUMIDITY = "relative_humidity_2m (%)"
 
     DEFAULT_CITIES = [
      {"City": "New York", "Latitude": 40.7128, "Longitude": -74.0060},
